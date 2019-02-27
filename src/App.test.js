@@ -28,10 +28,10 @@ it('should update player score', () => {
 
 it('should add a new player', () => {
   	const players = [
-    	{
-      	name: 'Kunegunda',
-      	score: 5
-    	}
+    		{
+      			name: 'Kunegunda',
+      			score: 5
+    		}
   	];
 
   	const appComponent = shallow(<App />);
