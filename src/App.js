@@ -15,7 +15,7 @@ class App extends Component {
   				},
   				{
   					name: 'Antos',
-  				  score: 0,
+  					score: 0,
   				}
   			]
   		}
@@ -33,60 +33,59 @@ class App extends Component {
 		})
 	}
 
-  onPlayerAdd = playerName => {
-    const newPlayer = {
-      name: playerName,
-      score: 0,
-    }
+  	onPlayerAdd = playerName => {
+    		const newPlayer = {
+      			name: playerName,
+     			score: 0,
+    		}
     
-    playerName == '' ? alert('Please enter name!') : 
-    this.setState({
-      players: [...this.state.players, newPlayer]
-    })
-  }
+    		playerName == '' ? alert('Please enter name!') : 
+    		this.setState({
+      			players: [...this.state.players, newPlayer]
+    		})
+  	}
 
-  onPlayerRemove = playerIndex => {
-    this.setState({
-      players: this.state.players.filter((player, index) => 
-        index !== playerIndex
-      )
-    })
-  }
+  	onPlayerRemove = playerIndex => {
+    		this.setState({
+      			players: this.state.players.filter((player, index) => 
+        			index !== playerIndex
+      			)
+    		})
+  	}
 
-  scoreSort = () => {
-    this.setState({
-      players: this.state.players.sort((a, b) => {
-        return b.score - a.score;
-      })
-    })
-  }
+  	scoreSort = () => {
+    		this.setState({
+      			players: this.state.players.sort((a, b) => {
+        			return b.score - a.score;
+      			})
+    		})
+  	}
 
-  resetScores = () => {
-  	this.setState({
-  		players: this.state.players.map(player => {
-  			return { ...player, score: 0 };
+  	resetScores = () => {
+  		this.setState({
+  			players: this.state.players.map(player => {
+  				return { ...player, score: 0 };
+  			})
   		})
-  	});
-  };
+  	}
+	
   	render() {
-    	return (
-      	<div className='App'>
-          <h1 className='app-title'>Scorekeeper app</h1>
-          <AddPlayer 
-            onPlayerAdd={ this.onPlayerAdd } 
-          />
-          <PlayersList 
-            players={ this.state.players } 
-            onScoreUpdate={ this.onScoreUpdate } 
-            onPlayerRemove={ this.onPlayerRemove }
-            scoreSort={ this.scoreSort } 
-          />
-          <div className='button-container'>
-            <button className='sort-btn' onClick={ this.scoreSort }>Sort list</button>
-            <button className='reset-btn' onClick={ this.resetScores}>Reset list</button>
-          </div>
-        </div>
-    	);
+    		return (
+      			<div className='App'>
+          			<h1 className='app-title'>Scorekeeper app</h1>
+          			<AddPlayer onPlayerAdd={ this.onPlayerAdd } />
+          			<PlayersList 
+            				players={ this.state.players } 
+            				onScoreUpdate={ this.onScoreUpdate } 
+            				onPlayerRemove={ this.onPlayerRemove }
+            				scoreSort={ this.scoreSort } 
+          			/>
+          			<div className='button-container'>
+            				<button className='sort-btn' onClick={ this.scoreSort }>Sort list</button>
+            				<button className='reset-btn' onClick={ this.resetScores}>Reset list</button>
+          			</div>
+        		</div>
+    		);
   	}
 }
 
